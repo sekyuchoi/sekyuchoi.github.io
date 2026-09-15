@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Sekyu Choi</title>
+<meta name="description" content="Sekyu Choi — Associate Professor, School of Economics, University of Bristol. Labor economics: wage dynamics, job search, unemployment insurance, household economics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: #eef1f6;
+  --panel: #ffffff;
+  --panel-line: #b7c4d8;
+  --ink: #10182a;
+  --ink-soft: #56647d;
+  --red: #d81f1f;
+  --red-glow: #c22a1c;
+  --blue: #0077b6;
+  --white: #ffffff;
+  --max-line: 66ch;
+}
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(16,24,42,0.05) 0px, transparent 1px, transparent 32px),
+    repeating-linear-gradient(90deg, rgba(16,24,42,0.05) 0px, transparent 1px, transparent 32px),
+    radial-gradient(circle at 15% 0%, rgba(0,119,182,0.08), transparent 45%),
+    radial-gradient(circle at 100% 30%, rgba(216,31,31,0.07), transparent 45%),
+    var(--bg);
+  color: var(--ink);
+  font-family: 'Rajdhani', sans-serif;
+  line-height: 1.6;
+  position: relative;
+}
+body::after{
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(16,24,42,0.02) 0px, transparent 1px, transparent 3px);
+  pointer-events: none;
+  z-index: 5;
+}
+
+a{ color: var(--ink); text-decoration-color: var(--blue); text-underline-offset: 3px; }
+a:hover{ color: var(--red-glow); text-decoration-color: var(--red-glow); }
+a:focus-visible{ outline: 2px solid var(--blue); outline-offset: 3px; }
+
+.topbar{
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--blue);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 28px;
+  border-bottom: 1px solid var(--panel-line);
+  display: flex;
+  justify-content: space-between;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.topbar .dot{ display:inline-block; width:7px; height:7px; border-radius:50%; background: var(--red); margin-right:8px; box-shadow: 0 0 8px var(--red-glow); animation: blink 1.6s ease-in-out infinite; }
+@keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+.hero{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 28px 30px;
+  position: relative;
+  overflow: hidden;
+}
+.hero .stripe{
+  position: absolute;
+  top: 18px; left: -60px;
+  width: 140%;
+  height: 46px;
+  background: linear-gradient(100deg, var(--red) 0%, var(--red) 40%, var(--white) 41%, var(--white) 44%, var(--blue) 45%, var(--blue) 100%);
+  box-shadow: 0 2px 18px rgba(16,24,42,0.18);
+  transform: rotate(-3deg);
+  opacity: 0.95;
+  z-index: 0;
+}
+.hero h1{
+  position: relative;
+  z-index: 1;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(2.6rem, 8vw, 5.2rem);
+  margin: 30px 0 0;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  text-shadow:
+    2px 2px 0 var(--red),
+    -2px -2px 0 var(--blue),
+    0 0 22px rgba(0,119,182,0.22);
+  transform: skewX(-4deg);
+}
+.hero .role-line{
+  position: relative; z-index: 1;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-top: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.hero .role-line strong{ color: var(--blue); }
+
+.page{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 10px 28px 0;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.sidebar{ position: sticky; top: 24px; }
+
+.portrait-frame{
+  position: relative;
+  padding: 10px;
+  border: 1px solid var(--panel-line);
+  background: var(--panel);
+}
+.portrait{
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1) contrast(1.2) brightness(1.05);
+}
+.corner{ position: absolute; width: 16px; height: 16px; border: 2px solid var(--blue); }
+.portrait-frame .corner.tl{ top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.portrait-frame .corner.tr{ top: -1px; right: -1px; border-left: none; border-bottom: none; }
+.portrait-frame .corner.bl{ bottom: -1px; left: -1px; border-right: none; border-top: none; }
+.portrait-frame .corner.br{ bottom: -1px; right: -1px; border-left: none; border-top: none; }
+.scan-label{
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--red-glow);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.role{
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  margin: 22px 0;
+  padding: 14px;
+  background: var(--panel);
+  border: 1px solid var(--panel-line);
+  border-left: 3px solid var(--red);
+}
+.role strong{ display: block; color: var(--ink); font-family: 'Orbitron', sans-serif; font-size: 0.85rem; margin-bottom: 6px; letter-spacing: 0.03em; }
+
+.side-links{ display: flex; flex-direction: column; gap: 10px; font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; }
+.side-links a{
+  text-decoration: none;
+  padding: 10px 14px;
+  background: var(--panel);
+  border: 1px solid var(--panel-line);
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.side-links a:hover{ border-color: var(--blue); background: rgba(0,119,182,0.06); }
+.side-links .arrow{ color: var(--red-glow); margin-right: 8px; }
+
+main{ padding-top: 30px; padding-bottom: 60px; }
+
+.intro{
+  max-width: var(--max-line);
+  color: var(--ink-soft);
+  font-size: 1.08rem;
+  font-weight: 500;
+  margin: 0 0 56px;
+  padding-left: 18px;
+  border-left: 2px solid var(--blue);
+}
+
+section{ margin-bottom: 60px; }
+
+h2{
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 24px;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+h2::before{ content: '▸'; color: var(--red); }
+h2::after{ content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--panel-line), transparent); }
+
+.pubs{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+
+.entry{
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.4em 1fr;
+  gap: 4px 16px;
+  padding: 18px 20px;
+  background: var(--panel);
+  border: 1px solid var(--panel-line);
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.entry:hover{ border-color: var(--blue); transform: translateX(3px); }
+.entry .corner{ display: none; }
+.entry-tag{
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--blue);
+  padding-top: 2px;
+}
+.entry-body{ max-width: var(--max-line); }
+.entry-title, .entry-title a{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+  text-decoration-line: none;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.entry-title a:hover{ text-decoration-line: underline; }
+.entry-meta{ font-family: 'Share Tech Mono', monospace; font-size: 0.74rem; color: var(--ink-soft); margin-top: 8px; line-height: 1.8; }
+.venue{ font-style: italic; color: #b9c8e6; }
+.status{ color: var(--red-glow); font-weight: 700; text-transform: uppercase; }
+.status-muted{ color: var(--ink-soft); }
+.entry-note{ font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: var(--ink-soft); margin-top: 6px; }
+.entry-note a{ text-decoration: underline; }
+
+figure.field-photo{
+  margin: 0 0 56px;
+  position: relative;
+  border: 1px solid var(--panel-line);
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+}
+figure.field-photo img{
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1) contrast(1.15) brightness(0.95);
+}
+figure.field-photo figcaption{
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--blue);
+  padding: 10px 16px;
+  background: var(--panel);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-top: 1px solid var(--panel-line);
+}
+
+footer{
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  padding: 20px 0 60px;
+  border-top: 1px solid var(--panel-line);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 780px){
+  .page{ grid-template-columns: 1fr; gap: 28px; padding-top: 10px; }
+  .sidebar{ position: static; }
+  .entry{ grid-template-columns: 1fr; }
+  .topbar{ flex-direction: column; gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .topbar .dot{ animation: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- <div class="topbar">
+  <span><span class="dot"></span>UN SPACY // FACULTY REGISTRY</span>
+  <span>SEC. ECONOMICS // BRISTOL</span>
+</div> -->
+
+<div class="hero">
+  <div class="stripe"></div>
+  <h1>SEKYU CHOI</h1>
+  <p class="role-line"><strong>ASSOC. PROFESSOR</strong> // SCHOOL OF ECONOMICS // UNIVERSITY OF BRISTOL</p>
+</div>
+
+<div class="page">
+
+  <aside class="sidebar">
+    <div class="portrait-frame">
+      <img class="portrait" src="pics/profile.jpg" alt="Portrait of Sekyu Choi">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+    </div>
+    <!-- <p class="scan-label">ID VERIFIED &middot; PILOT: S. CHOI</p> -->
+    <p class="role">
+      <strong>Associate Professor</strong>
+      School of Economics<br>
+      University of Bristol
+    </p>
+    <nav class="side-links">
+      <a href="mailto:sekyu.choi@bristol.ac.uk"><span class="arrow">&#9993;</span>EMAIL</a>
+      <a href="cv.pdf"><span class="arrow">&#8595;</span>CV</a>
+    </nav>
+  </aside>
+
+  <main>
+
+<!--     <p class="intro">I work in labor economics, studying wage dynamics, job search and matching, unemployment insurance, and household decisions over the life cycle. Recent projects use high-quality vacancy and job-search data to study wage cyclicality, examine how remote work reshapes competition for workers, and trace occupational mobility across more than a century of U.S. labor market history.</p> -->
+
+    <section id="working-papers">
+      <h2>Working Papers</h2>
+      <ol class="pubs">
+        <li class="entry">
+          <span class="entry-tag">WP-01</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="papers/wage-cyclicality.pdf">Wage Cyclicality: Evidence From High-Quality Vacancy Data</a></div>
+            <div class="entry-meta">with <a href="https://www.benjaminvillena.com/">Benjamin Villena-Roldán</a> and Nincen Figueroa &middot; July 2025 &middot; <span class="status">R&amp;R, AEJ: Macro</span></div>
+            <div class="entry-note">Previously circulated as <em>Wage Cyclicality Revisited: The Role of Hiring Standards</em>.</div>
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">WP-02</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="papers/aging-labor-market-dynamics.pdf">Aging and Labor Market Dynamics</a></div>
+            <div class="entry-meta">with <a href="https://sites.google.com/view/eyjung">Euiyoung Jung</a> &middot; July 2026</div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">WP-03</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="papers/remote-work-competition-wages.pdf">Remote Work, Competition and Wages: Disentangling Demand and Supply Influences</a></div>
+            <div class="entry-meta">with <a href="https://stevenjdavis.com/">Steven Davis</a>, Oscar Jaramillo, and <a href="https://www.benjaminvillena.com/">Benjamin Villena-Roldán</a> &middot; February 2026</div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">WP-04</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="papers/untying-the-knot.pdf">Untying the Knot: Divorce Legalization and the Decline in Marriage</a></div>
+            <div class="entry-meta">with <a href="https://sites.google.com/view/clementjoubert/home">Clément Joubert</a> &middot; February 2026</div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">WP-05</span>
+          <div class="entry-body">
+            <div class="entry-title">What SHe/He Wants in a Job</div>
+            <div class="entry-meta">with <a href="https://www.benjaminvillena.com/">Benjamin Villena-Roldán</a> &middot; <span class="status">draft coming soon</span></div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">WP-06</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="papers/occupational-mobility.pdf">Occupational Mobility Across Years, Decades and a Century</a></div>
+            <div class="entry-meta"> &middot; <span class="status-muted">dormant</span></div>
+            <div class="entry-note"><a href="https://www.dropbox.com/scl/fi/aroy7acsd7z1a6ohc8u7y/occmob_longterm.zip">Hours and wage data by occupation, from 1880 to 1930</a></div>
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+      </ol>
+    </section>
+
+    <figure class="field-photo">
+      <img src="pics/clifton-bridge-anime.jpg" alt="Clifton Suspension Bridge, Bristol, at night">
+      <figcaption>Clifton Suspension Bridge, Bristol</figcaption>
+    </figure>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <ol class="pubs">
+        <li class="entry">
+          <span class="entry-tag">PB-01</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="papers/deconstructing-job-search-behavior.pdf">Deconstructing Job Search Behavior</a></div>
+            <div class="entry-meta">with Stefano Banfi and <a href="https://www.benjaminvillena.com/">Benjamin Villena-Roldán</a> &middot; December 2025 &middot; <span class="venue">Labour Economics, vol. 97</span></div>
+            <div class="entry-note">Older version with more results: <a href="papers/deconstructing-job-search-behavior-older-draft.pdf">here</a>.</div>
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">PB-02</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="papers/sorting-online-and-on-time.pdf">Sorting On-line and On-time</a></div>
+            <div class="entry-meta">with Stefano Banfi and <a href="https://www.benjaminvillena.com/">Benjamin Villena-Roldán</a> &middot; July 2022 &middot; <span class="venue">European Economic Review, vol. 146</span></div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">PB-03</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="papers/labor-share-productivity-dynamics.pdf">Labor Share and Productivity Dynamics</a></div>
+            <div class="entry-meta">with <a href="https://www.sas.upenn.edu/~vr0j/">José-Víctor Ríos-Rull</a> &middot; October 2021 &middot; <span class="venue">Economic Journal, vol. 131(639), pp. 2856&ndash;2886</span></div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">PB-04</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="papers/households-unemployment-insurance.pdf">On Households and Unemployment Insurance</a></div>
+            <div class="entry-meta">with <a href="https://drarnau.github.io/">Arnau Valladares-Esteban</a> &middot; January 2020 &middot; <span class="venue">Quantitative Economics, vol. 11(1), pp. 437&ndash;469</span></div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">PB-05</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="papers/worker-turnover-unemployment-insurance.pdf">Worker Turnover and Unemployment Insurance</a></div>
+            <div class="entry-meta">with <a href="https://sites.google.com/barcelonagse.eu/javier-fernandez-blanco">Javier Fernandez-Blanco</a> &middot; June 2018 &middot; <span class="venue">International Economic Review, vol. 59(4), pp. 1837&ndash;1876</span></div>
+            <div class="entry-note"><a href="papers/worker-turnover-online-appendix.pdf">Online appendix</a> with more results.</div>
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">PB-06</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="papers/marriage-unemployment-gap.pdf">The Marriage Unemployment Gap</a></div>
+            <div class="entry-meta">with <a href="https://drarnau.github.io/">Arnau Valladares-Esteban</a> &middot; January 2018 &middot; <span class="venue">The B.E. Journal of Macroeconomics, vol. 18(1), pp. 1&ndash;14</span></div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">PB-07</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="https://ideas.repec.org/a/bla/obuest/v79y2017i2p276-289.html">A Note on U.S. Worker Turnover</a></div>
+            <div class="entry-meta">with <a href="https://sites.google.com/barcelonagse.eu/javier-fernandez-blanco">Javier Fernandez-Blanco</a> &middot; April 2017 &middot; <span class="venue">Oxford Bulletin of Economics and Statistics, vol. 79(2), pp. 276&ndash;289</span></div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">PB-08</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="papers/fertility-risk-life-cycle.pdf">Fertility Risk in the Life-Cycle</a></div>
+            <div class="entry-meta">sole author &middot; February 2017 &middot; <span class="venue">International Economic Review, vol. 58(1), pp. 237&ndash;259</span></div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">PB-09</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="papers/unemployment-participation-worker-flows.pdf">Unemployment, Participation and Worker Flows over the Life-Cycle</a></div>
+            <div class="entry-meta">with <a href="https://sites.google.com/site/ajaniak/">Alexandre Janiak</a> and <a href="https://www.benjaminvillena.com/">Benjamin Villena-Roldán</a> &middot; December 2015 &middot; <span class="venue">Economic Journal, vol. 125(589)</span></div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">PB-10</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="papers/household-size-consumption.pdf">Revisiting the Effect of Household Size on Consumption Over the Life-Cycle</a></div>
+            <div class="entry-meta">with <a href="https://sites.google.com/view/alexbick">Alexander Bick</a> &middot; May 2013 &middot; <span class="venue">Journal of Economic Dynamics and Control, vol. 37</span></div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">PB-11</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="https://ideas.repec.org/a/adr/anecst/y2009i95-96p251-277.html">Understanding the Dynamics of Labor Share: The Role of Noncompetitive Factor Prices</a></div>
+            <div class="entry-meta">with José-Víctor Ríos-Rull &middot; July/December 2009 &middot; <span class="venue">Annales d'Économie et de Statistique, No. 95/96</span></div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">PB-12</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="https://ideas.repec.org/a/ioe/cuadec/v40y2003i121p668-678.html">Recessions, Openness and Exchange Rate Regime</a></div>
+            <div class="entry-meta">with Felipe Larraín B. &middot; December 2003 &middot; <span class="venue">Latin American Journal of Economics, vol. 121 &middot; in Spanish</span></div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+        <li class="entry">
+          <span class="entry-tag">PB-13</span>
+          <div class="entry-body">
+            <div class="entry-title"><a href="https://www.scielo.cl/scielo.php?pid=S0717-68212003012000004&amp;script=sci_abstract&amp;tlng=en">Money as a Leading Indicator</a></div>
+            <div class="entry-meta">with Luis Felipe Lagos &middot; August 2003 &middot; <span class="venue">Latin American Journal of Economics, vol. 120 &middot; in Spanish</span></div>
+            
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </li>
+      </ol>
+    </section>
+
+<!--     <footer>
+      <p>&copy; <span id="year"></span> Sekyu Choi &middot; End of transmission</p>
+    </footer> -->
+
+  </main>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
